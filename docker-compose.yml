@@ -5,20 +5,6 @@ services:
         image: memcached:alpine
         container_name: freshjam-memcached
 
-    mysql:
-        image: mysql:5.7
-        container_name: freshjam-mysql
-        working_dir: /application
-        volumes:
-            - .:/application
-        environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=freshjam
-            - MYSQL_USER=jammer
-            - MYSQL_PASSWORD=j4mH4mD4m
-        ports:
-            - "1027:3306"
-
     webserver:
         image: nginx:alpine
         container_name: freshjam-webserver

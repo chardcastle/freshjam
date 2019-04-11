@@ -15,5 +15,12 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        'view_operators' => [
+            'add' => "\u{2795}",
+            'subtract' => "\u{2796}",
+            'divide' => "\u{2797}",
+            'multiply' => "\u{2716}"
+        ]
     ],
 ];

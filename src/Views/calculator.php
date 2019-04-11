@@ -16,7 +16,7 @@
 </head>
 <body>
 <h1 class="text-center">Alien Emoji Calculator App</h1>
-<form class="form-inline calculator text-center" action="/">
+<form id="calculate" class="form-inline text-center" action="/">
     <br/>
 
     <!-- Text input-->
@@ -64,53 +64,7 @@
 <div class="row text-center" id="output" style="margin-top:50px">
     <div class="col-sm-12"></div>
 </div>
-<script
-        src="https://code.jquery.com/jquery-3.4.0.min.js"
-        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-        crossorigin="anonymous"></script>
-<script type="application/javascript">
-    function getOperationDescription(operation) {
-        let desc;
-        switch (operation) {
-            case 'add':
-                desc = 'plus';
-                break;
-            case 'subtract':
-                desc = 'subtracted by';
-                break;
-            case 'divide':
-                desc = 'divided by';
-                break;
-            case 'multiply':
-                desc = 'multiplied by';
-                break;
-        }
-        return desc;
-    }
 
-    $(function() {
-        console.info('Loaded');
-        $('.calculator').submit(function(event) {
-            var desc = getOperationDescription($("#operation").val());
-            var output = $("#operand_one").val() + " " + desc + " " + $("#operand_two").val();
-            console.info('submit');
-            $.ajax({
-                url: "/" + $("#operation").val(),
-                data: {
-                    operand_one: $("#operand_one").val(),
-                    operand_two: $("#operand_two").val(),
-                },
-                type: "POST",
-                dataType: "json",
-            }).done(function (json) {
-                $("<h4 class=\"text-center\">").text(output + " = " + json.result).prependTo("#output");
-            }).fail(function (xhr) {
-                $("<h4 class=\"text-center\">").text(xhr.responseJSON.error).prependTo("#output");
-            });
-
-            event.preventDefault();
-        });
-    });
-</script>
+<script type="application/javascript" src='js/app.js'></script>
 </body>
 </html>
